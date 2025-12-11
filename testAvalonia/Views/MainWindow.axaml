@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:testAvalonia.ViewModels"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:metadata="using:System.Reflection.Metadata"
+		xmlns:ck="using:testAvalonia"
+		mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+		x:Class="testAvalonia.Views.MainWindow"
+		x:DataType="vm:MainWindowViewModel"
+		Icon="/Assets/avalonia-logo.ico"
+		Title="testAvalonia" Width="400" Height="450">
+
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+		to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<StackPanel>
+		<TextBox Text="{Binding Name}" Watermark="Add a message to enable the button"></TextBox>
+		<Button Command="{Binding ExampleCommand}">
+			Run the example
+		</Button>
+		<Button Command="{Binding SetComm}" CommandParameter="test">
+			btn2
+		</Button>
+		<TextBlock Margin="0 5" Text="{Binding Output}" />
+		<Border Margin="5" CornerRadius="10" Background="LightBlue">
+			<TextBlock Text="{Binding Greeting,Mode=OneWay }" Margin="5" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		</Border>
+		<Grid ShowGridLines="False"  Margin="5"
+			  ColumnDefinitions="120, 100"
+			  RowDefinitions="Auto, Auto, Auto">
+			<Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
+			<TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0" Name="txtUserName"/>
+			<Label Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</Label>
+			<TextBox Grid.Row="1"  Grid.Column="1" Margin="0 5" Text="{Binding #txtUserName.Text}" Name="txtDescript" IsReadOnly="True"/>
+			<Button Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Click="Button_Click">Calculate</Button>
+		</Grid>
+		<ck:testConstrol Name="tcc"></ck:testConstrol>
+
+		<ListBox ItemsSource="{Binding ItemList}">
+			<ListBox.Styles>
+				<Style Selector="TextBlock.class1">
+					<Setter Property="Background" Value="OrangeRed" />
+				</Style>
+				<Style Selector="TextBlock.class2">
+					<Setter Property="Background" Value="PaleGreen" />
+				</Style>
+				<Style Selector="ListBoxItem">
+					<Setter Property="Padding" Value="0 0 0 1" />
+				</Style>
+			</ListBox.Styles>
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<DockPanel Height="30" Margin="0,0,0,0" >
+						<TextBlock DockPanel.Dock="Top"  Margin="0,0,0,0"
+								   Classes.class1="{Binding IsClass1 }"
+								   Classes.class2="{Binding !IsClass1 }"
+								   Text="{Binding Title}"/>
+					</DockPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</StackPanel>
+</Window>
