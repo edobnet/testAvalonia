@@ -37,7 +37,7 @@
 			<TextBox Grid.Row="1"  Grid.Column="1" Margin="0 5" Text="{Binding #txtUserName.Text}" Name="txtDescript" IsReadOnly="True"/>
 			<Button Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Click="Button_Click">Calculate</Button>
 		</Grid>
-		<ck:testConstrol Name="tcc"></ck:testConstrol>
+		<ck:testConstrol Name="tcc" ValueChanged="tcc_ValueChanged" ></ck:testConstrol>
 
 		<ListBox ItemsSource="{Binding ItemList}">
 			<ListBox.Styles>

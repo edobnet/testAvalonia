@@ -16,10 +16,15 @@ namespace testAvalonia.Views {
             }
 
             Debug.WriteLine("click");
-            Window1 win = new () {
+            Window1 win = new() {
 
             };
             win.Show();
+        }
+
+        private void tcc_ValueChanged(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+
+            Debug.WriteLine("tcc_ValueChanged");
         }
     }
 }

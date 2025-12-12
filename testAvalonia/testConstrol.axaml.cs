@@ -24,11 +24,11 @@ public partial class testConstrol : UserControl {
     }
 
     public void setName(string title) {
-        btnTame.Content = title;
+        btnName.Content = title;
     }
 
     protected virtual void OnValueChanged() {
-        RoutedEventArgs args = new RoutedEventArgs(ValueChangedEvent);
+        RoutedEventArgs args = new (ValueChangedEvent);
         RaiseEvent(args);
     }
 
